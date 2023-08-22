@@ -1,7 +1,8 @@
 name: CI
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -9,6 +10,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Set Up Android SDK Environment
+        run: |
+          export ANDROID_HOME=$GITHUB_WORKSPACE/android-sdk
+          export PATH=$ANDROID_HOME/cmdline-tools/tools/bin:$PATH
+
+      - name: Accept Android SDK Licenses
+        run: |
+          yes | sdkmanager --licenses
 
       # used to cache dependencies with a timeout
       - name: Get Date
