@@ -16,10 +16,6 @@ jobs:
           export ANDROID_HOME=$GITHUB_WORKSPACE/android-sdk
           export PATH=$ANDROID_HOME/cmdline-tools/tools/bin:$PATH
 
-      - name: Accept Android SDK Licenses
-        run: |
-          yes | sdkmanager --licenses
-
       # used to cache dependencies with a timeout
       - name: Get Date
         id: get-date
